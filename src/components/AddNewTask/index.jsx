@@ -11,6 +11,11 @@ import { useNavigate } from "react-router-dom";
 const AddNewTask = () => {
   const navigate = useNavigate();
   const onClickBackButton = () => navigate("/home");
+
+  const onClickSubmitForm = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
   return (
     <AddProjectContainer>
       <header>
@@ -25,7 +30,7 @@ const AddNewTask = () => {
           <IoMdNotifications />
         </button>
       </header>
-      <ProjectFormContainer>
+      <ProjectFormContainer onSubmit={onClickSubmitForm}>
         <div className="task-group-container">
           <GiDiscGolfBag className="task-icon" />
           <div>

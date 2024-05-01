@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+     Task Management and to-do List app
 
-## Available Scripts
+## Objective
 
-In the project directory, you can run:
+    This productive tool is designed to help you better manage your task project-wise conveniently!
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    HTML, CSS ,JAVASCRIPT ,REACT.JS ,JSON,GIT ,
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Completion Instructions
 
-### `npm test`
+### Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Must Have
 
-### `npm run build`
+    Home section,Daily schedule section,profile section,add project or task section
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Nice to Have
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Bonous Tasks
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    App intro and profile section
 
-### `npm run eject`
+### Guidelines to develop a project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Must Have
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Task List Interface
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    The task list interface is where users can view their list of tasks. Here are the components we’ll include:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Header: Display the app logo and navigation options (e.g., search, filter, settings).
+    Task List: Show a scrollable list of tasks. Each task item should include the task name, due date, priority, and status (e.g., completed, pending).
+    Add Task Button: A prominent button to add new tasks.
+    Task Actions: Icons or buttons for editing, deleting, and marking tasks as complete.
+    Wireframe:
+    !Task List Wireframe
 
-## Learn More
+    Mockup:
+    !Task List Mockup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Task Details
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    When users click on a task, they’ll see detailed information about that task. Here’s what we’ll include:
 
-### Code Splitting
+    Task Title: Display the task name.
+    Description: Provide space for a detailed description of the task.
+    Due Date: Show the deadline for completing the task.
+    Priority: Allow users to set task priority (e.g., high, medium, low).
+    Attachments: If applicable, display any attached files or links.
+    Edit and Delete Buttons: Options to edit task details or delete the task.
+    Wireframe:
+    !Task Details Wireframe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    Mockup:
+    !Task Details Mockup
 
-### Analyzing the Bundle Size
+Task Summary Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    This page provides an overview of task statistics and progress. Components include:
 
-### Making a Progressive Web App
+    Summary Stats: Display the total number of tasks, completed tasks, and pending tasks.
+    Graphs or Charts: Visualize task distribution by priority, due date, or category.
+    Filters: Allow users to filter tasks based on criteria (e.g., date range, priority).
+    Export Button: Option to export task data (e.g., as a CSV file).
+    Wireframe:
+    !Task Summary Wireframe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Submission Instructions
 
-### Advanced Configuration
+#### Must Have
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Submission 1
 
-### Deployment
+    1. Publish your Project.
+    2. Submit your published link.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Submission 2
 
-### `npm run build` fails to minify
+    1. Push your code to GITHUB.
+    2. In your repository you will find CODE option. You can download the ZIP file from there.
+    3. Upload the ZIP file to google drive.
+    4. Share both your GIT repository link and google drive link of your ZIP file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Submission 3
+
+    1. Create a screen recording video of your project by testing out all the functionalities.
+    2. Upload the screen recording to google drive and share the drive link with us.
+
+## Resources
+
+### Design files
+
+    Figma Design files
+
+### APIs
+
+    i didn't use any apis
+
+### Third-party packages
+
+    "react-circular-progressbar": "^2.1.0",
+    "react-icons": "^5.1.0",
+    "react-router-dom": "^6.23.0",
+    "styled-components": "^6.1.8",

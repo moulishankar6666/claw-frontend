@@ -89,7 +89,7 @@ const Dates = [
   },
 ];
 
-const TaskList = [
+const taskList = [
   {
     id: 1,
     projectname: "Grocery shopping app design",
@@ -125,7 +125,7 @@ const TaskList = [
 ];
 
 const ScheduleSection = () => {
-  const [taskList, setTaskList] = useState(TaskList);
+  // const [taskList, setTaskList] = useState(TaskList);
 
   const [activeDate, setDate] = useState(`${date}`.split(" ")[2]);
 

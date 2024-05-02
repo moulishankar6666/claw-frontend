@@ -81,6 +81,7 @@ export const FilterTasks = styled.ul`
     cursor: pointer;
     display: flex;
     align-items: center;
+    font-size: 13px;
   }
 
   .active {

@@ -192,9 +192,8 @@ const ScheduleSection = () => {
         </li>
       </FilterTasks>
       <TasksListContainer>
-        {dateWiseFilter.length !== 0
-          ? dateWiseFilter.map((each) => displayTaskItems(each))
-          : notasks()}
+        {dateWiseFilter && dateWiseFilter.map((each) => displayTaskItems(each))}
+        {dateWiseFilter.length === 0 && notasks()}
       </TasksListContainer>
       <NavBar />
     </ScheduleSectionContainer>

@@ -141,10 +141,17 @@ const ScheduleSection = () => {
     );
   };
 
+  const notasks = () => {
+    return <h1 className="no-task-msg">No Tasks in this day </h1>;
+  };
+
   const filterListItems =
     activeTab === "All"
       ? taskList
       : taskList.filter((each) => each.status === activeTab);
+  const dateWiseFilter = filterListItems.filter(
+    (each) => each.date.split(" ")[2] === activeDate
+  );
 
   return (
     <ScheduleSectionContainer>
@@ -185,7 +192,9 @@ const ScheduleSection = () => {
         </li>
       </FilterTasks>
       <TasksListContainer>
-        {filterListItems.map((each) => displayTaskItems(each))}
+        {dateWiseFilter.length === 0
+          ? dateWiseFilter.map((each) => displayTaskItems(each))
+          : notasks()}
       </TasksListContainer>
       <NavBar />
     </ScheduleSectionContainer>

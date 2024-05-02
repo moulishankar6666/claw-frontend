@@ -66,7 +66,7 @@ const AddNewTask = () => {
         }`,
         group: projectDetails.group,
         status: "To do",
-        date: projectDetails.startDate,
+        date: `${new Date(projectDetails.startDate)}`,
       });
       await setProjectDetails({ ...projectDetails, error: false });
       navigate("/schedule");

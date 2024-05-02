@@ -10,7 +10,6 @@ const EntryPage = () => {
   const name = JSON.parse(localStorage.getItem("userDetails"));
 
   const clickStartBtn = () => {
-    console.log(name);
     if (name) {
       return navigate("/home");
     } else {

@@ -156,4 +156,9 @@ export const TasksListContainer = styled.ul`
     color: #171747;
     margin-right: 10px;
   }
+
+  .no-task-msg {
+    text-align: center;
+    padding: 20px 0px;
+  }
 `;

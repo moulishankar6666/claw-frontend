@@ -192,7 +192,7 @@ const ScheduleSection = () => {
         </li>
       </FilterTasks>
       <TasksListContainer>
-        {dateWiseFilter.length === 0
+        {dateWiseFilter.length !== 0
           ? dateWiseFilter.map((each) => displayTaskItems(each))
           : notasks()}
       </TasksListContainer>

@@ -77,4 +77,11 @@ export const ProfileContainer = styled.section`
     font-weight: 600;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 480px) {
+    .card-container > .user-details > div {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
 `;

@@ -37,8 +37,6 @@ export const DisplayDates = styled.ul`
   cursor: pointer;
 
   li {
-    background-color: ${(props) => console.log(props.today)};
-
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -81,6 +79,8 @@ export const FilterTasks = styled.ul`
     padding: 5px 20px;
     border-radius: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   .active {

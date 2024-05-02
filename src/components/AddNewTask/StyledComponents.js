@@ -92,7 +92,7 @@ export const ProjectFormContainer = styled.form`
   }
 
   .input-container > input {
-    border: none;
+    border: transparent solid;
     outline: none;
     cursor: pointer;
     flex-grow: 1;
@@ -114,5 +114,11 @@ export const ProjectFormContainer = styled.form`
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+  }
+
+  .error-msg {
+    color: red;
+    font-weight: bold;
+    font-size: 13px;
   }
 `;

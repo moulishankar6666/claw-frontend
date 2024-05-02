@@ -14,11 +14,12 @@ import { MdPersonPin } from "react-icons/md";
 import { PiBookOpenTextFill } from "react-icons/pi";
 
 // Hooks
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Component
 import NavBar from "../NavBar";
+import { projectListContext } from "../.././App";
 
 let date = new Date();
 const Dates = [
@@ -89,43 +90,8 @@ const Dates = [
   },
 ];
 
-const taskList = [
-  {
-    id: 1,
-    projectname: "Grocery shopping app design",
-    description: "Market Research",
-    time: "10:00 AM",
-    group: "office project",
-    status: "Done",
-  },
-  {
-    id: 2,
-    projectname: "Grocery shopping app design",
-    description: "Competitive Analysis",
-    time: "12:00 PM",
-    group: "office project",
-    status: "Progress",
-  },
-  {
-    id: 3,
-    projectname: "Uber Eats redesign challenge",
-    description: "Create Low-fidelity Wireframe",
-    time: "7:00 PM",
-    group: "personal project",
-    status: "To do",
-  },
-  {
-    id: 4,
-    projectname: "About design sprint",
-    description: "How to pitch a Design Sprint",
-    time: "09:00 PM",
-    group: "study",
-    status: "To do",
-  },
-];
-
 const ScheduleSection = () => {
-  // const [taskList, setTaskList] = useState(TaskList);
+  const { taskList } = useContext(projectListContext);
 
   const [activeDate, setDate] = useState(`${date}`.split(" ")[2]);
 

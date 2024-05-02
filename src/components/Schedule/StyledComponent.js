@@ -76,7 +76,7 @@ export const FilterTasks = styled.ul`
     background-color: #c5c3f0;
     color: #171747;
     font-weight: 700;
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-radius: 10px;
     cursor: pointer;
     display: flex;

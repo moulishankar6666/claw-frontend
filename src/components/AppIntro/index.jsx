@@ -7,13 +7,11 @@ import { useNavigate } from "react-router-dom";
 const EntryPage = () => {
   const navigate = useNavigate();
 
-  const name = JSON.parse(localStorage.getItem("userDetails"));
-
-  const clickStartBtn = () => {
-    if (name) {
-      return navigate("/home");
+  const clickBtn = (value) => {
+    if (value === "login") {
+      navigate("/login");
     } else {
-      return navigate("/user-info");
+      navigate("/signin");
     }
   };
 
@@ -30,7 +28,14 @@ const EntryPage = () => {
           This productive tool is designed to help you better manage your task
           project-wise conveniently!
         </p>
-        <button onClick={clickStartBtn}>Let's Start</button>
+        <div className="intro-button-container">
+          <button onClick={() => clickBtn("login")} className="login-button">
+            LogIn
+          </button>
+          <button onClick={() => clickBtn("signin")} className="signin-button">
+            SignIn
+          </button>
+        </div>
       </div>
     </EntryPageMainContainer>
   );

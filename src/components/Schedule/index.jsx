@@ -9,13 +9,11 @@ import {
 import { IoArrowBackCircle } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
 import { FaClock } from "react-icons/fa";
-import { GiDiscGolfBag } from "react-icons/gi";
-import { MdPersonPin } from "react-icons/md";
-import { PiBookOpenTextFill } from "react-icons/pi";
+import { MdDelete } from "react-icons/md";
 
 // Hooks
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // Component
 import NavBar from "../NavBar";
@@ -88,16 +86,62 @@ const Dates = [
     id: 16,
     dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 9),
   },
+  {
+    id: 17,
+    dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 10),
+  },
+  {
+    id: 18,
+    dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 11),
+  },
+  {
+    id: 19,
+    dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 12),
+  },
+  {
+    id: 20,
+    dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 13),
+  },
+  {
+    id: 21,
+    dates: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 14),
+  },
 ];
 
+const apiStatus = {
+  initial: "INITIAL",
+  progress: "PROGRESS",
+  success: "SUCCESS",
+  failure: "FAILURE",
+};
+
 const ScheduleSection = () => {
-  const { taskList } = useContext(projectListContext);
+  const { updateList, taskList, userInfo } = useContext(projectListContext);
+  const navigate = useNavigate();
 
   const [activeDate, setDate] = useState(`${date}`.split(" ")[2]);
-
   const [activeTab, setTab] = useState("All");
+  const [Status, setStatus] = useState(apiStatus.initial);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchGetdata = async () => {
+      try {
+        const response = await fetch(
+          `https://todos-api-7oya.onrender.com/todos/${userInfo._id}`
+        );
+        if (!response.ok) {
+          alert("error");
+        }
+        let data = await response.json();
+        updateList(data);
+      } catch (error) {
+        alert(error);
+      } finally {
+        setStatus(apiStatus.success);
+      }
+    };
+    fetchGetdata();
+  }, []);
 
   const displaydates = (eachDate) => {
     const todayDate =
@@ -117,10 +161,31 @@ const ScheduleSection = () => {
   };
 
   const displayTaskItems = (task) => {
+    const onclickDelete = async () => {
+      try {
+        const respone = await fetch(
+          `https://todos-api-7oya.onrender.com/todo/${task._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        const data = await respone.json();
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
+        alert(data.text);
+      } catch (error) {
+        alert(error);
+      }
+    };
     return (
-      <li key={task.id}>
+      <li key={task._id}>
         <div className="task-info">
-          <p>{task.projectname}</p>
+          <p>{task.title}</p>
           <h5>{task.description}</h5>
           <div>
             <FaClock />
@@ -128,73 +193,95 @@ const ScheduleSection = () => {
           </div>
         </div>
         <div className="task-status">
-          {task.group === "study" ? (
-            <PiBookOpenTextFill className="task-icons" />
-          ) : task.group === "personal project" ? (
-            <MdPersonPin className="task-icons" />
-          ) : (
-            <GiDiscGolfBag className="task-icons" />
-          )}
-          <p>{task.status}</p>
+          <p>{task.todoStatus}</p>
+          <button onClick={onclickDelete} className="delete-btn">
+            <MdDelete />
+          </button>
         </div>
       </li>
     );
   };
 
   const notasks = () => {
-    return <h1 className="no-task-msg">No Tasks in this day </h1>;
+    return <h1 className="no-task-msg">no {activeTab} tasks in this day </h1>;
   };
 
-  const filterListItems =
-    activeTab === "All"
-      ? taskList
-      : taskList.filter((each) => each.status === activeTab);
-  const dateWiseFilter = filterListItems.filter(
-    (each) => each.date.split(" ")[2] === activeDate
-  );
+  const onSuccessView = () => {
+    const filterListItems =
+      activeTab === "All"
+        ? taskList
+        : taskList.filter((each) => each.todoStatus === activeTab);
 
+    const dateWiseFilter = filterListItems.filter(
+      (each) => each.date.split("-")[2] === activeDate
+    );
+
+    return (
+      <>
+        <header>
+          <button onClick={() => navigate("/home")}>
+            <IoArrowBackCircle />
+          </button>
+          <h3>Today's Task</h3>
+          <button>
+            <IoMdNotifications />
+          </button>
+        </header>
+        <DisplayDates>{Dates.map((each) => displaydates(each))}</DisplayDates>
+        <FilterTasks>
+          <li
+            onClick={() => setTab("All")}
+            className={activeTab === "All" ? "active" : "inactive"}
+          >
+            All
+          </li>
+          <li
+            onClick={() => setTab("To do")}
+            className={activeTab === "To do" ? "active" : "inactive"}
+          >
+            To do
+          </li>
+          <li
+            onClick={() => setTab("Progress")}
+            className={activeTab === "Progress" ? "active" : "inactive"}
+          >
+            In Progress
+          </li>
+          <li
+            onClick={() => setTab("Done")}
+            className={activeTab === "Done" ? "active" : "inactive"}
+          >
+            Done
+          </li>
+        </FilterTasks>
+        <TasksListContainer>
+          {dateWiseFilter &&
+            dateWiseFilter.map((each) => displayTaskItems(each))}
+          {dateWiseFilter.length === 0 && notasks()}
+        </TasksListContainer>
+      </>
+    );
+  };
+
+  const onProgressView = () => {
+    return <h1>please wait ...</h1>;
+  };
+
+  const renderStatus = () => {
+    switch (Status) {
+      case apiStatus.success:
+        return onSuccessView();
+      case apiStatus.progress:
+        return onProgressView();
+
+      default:
+        return null;
+    }
+  };
   return (
     <ScheduleSectionContainer>
-      <header>
-        <button onClick={() => navigate("/home")}>
-          <IoArrowBackCircle />
-        </button>
-        <h3>Today's Task</h3>
-        <button>
-          <IoMdNotifications />
-        </button>
-      </header>
-      <DisplayDates>{Dates.map((each) => displaydates(each))}</DisplayDates>
-      <FilterTasks>
-        <li
-          onClick={() => setTab("All")}
-          className={activeTab === "All" ? "active" : "inactive"}
-        >
-          All
-        </li>
-        <li
-          onClick={() => setTab("To do")}
-          className={activeTab === "To do" ? "active" : "inactive"}
-        >
-          To do
-        </li>
-        <li
-          onClick={() => setTab("Progress")}
-          className={activeTab === "Progress" ? "active" : "inactive"}
-        >
-          In Progress
-        </li>
-        <li
-          onClick={() => setTab("Done")}
-          className={activeTab === "Done" ? "active" : "inactive"}
-        >
-          Done
-        </li>
-      </FilterTasks>
-      <TasksListContainer>
-        {dateWiseFilter && dateWiseFilter.map((each) => displayTaskItems(each))}
-        {dateWiseFilter.length === 0 && notasks()}
-      </TasksListContainer>
+      {renderStatus()}
+
       <NavBar />
     </ScheduleSectionContainer>
   );

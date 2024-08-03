@@ -57,18 +57,25 @@ export const EntryPageMainContainer = styled.main`
     opacity: 0.8;
   }
 
-  .app-intro > button {
+  .app-intro > .intro-button-container {
     margin-top: 10px;
     height: 40px;
     width: 80%;
-    border-radius: 12px;
-    border: none;
+
+    display: flex;
+    justify-content: space-around;
+  }
+  .app-intro > .intro-button-container > .login-button,
+  .app-intro > .intro-button-container > .signin-button {
     background-color: #171747;
-    outlin: none;
+    width: 100px;
+    border-radius: 8px;
     color: #fff;
-    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
     cursor: pointer;
-    font-weight: 700;
-    font-family: "roboto", sans-serif;
   }
 `;

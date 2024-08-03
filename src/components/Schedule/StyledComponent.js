@@ -139,17 +139,24 @@ export const TasksListContainer = styled.ul`
   li > .task-status {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: end;
+    justify-content: space-between;
+    align-items: center;
   }
 
   li > .task-status > p {
     background-color: #c5c3f0;
     padding: 5px 10px;
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 10px;
     color: #171747;
     font-weight: bold;
+  }
+  li > .task-status > .delete-btn {
+    font-size: 23px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
   }
 
   li > .task-status > .task-icons {

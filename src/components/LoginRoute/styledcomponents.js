@@ -13,13 +13,14 @@ export const UserInfoFormContainer = styled.section`
 `;
 
 export const FormContainer = styled.form`
-  height: 80%;
+  height: 90%;
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   gap: 15px;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 25px;
   box-shadow: 1px 1px 16px -5px #000;
   padding: 20px;
@@ -48,12 +49,11 @@ export const FormContainer = styled.form`
     margin-left: 5px;
   }
 
-  div > input,
-  div > select {
+  div > input {
     border-radius: 5px;
     border: #000 solid 0.5px;
     outline: none;
-    height: 25px;
+    height: 35px;
     padding-left: 5px;
     border: none;
   }
@@ -63,13 +63,31 @@ export const FormContainer = styled.form`
   }
 
   button {
+    width: 120px;
+    height: 40px;
     border: none;
     background-color: #171747;
-    padding: 8px;
-    border-radius: 10px;
+
+    margin-top: 15px;
+    border-radius: 50px;
     color: #fff;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
+    align-self: center;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  @media screen and (min-width: 481px) {
+    height: 90%;
+    width: 80%;
+    align-items: center;
+
+    div {
+      width: 370px;
+    }
   }
 
   @media screen and (min-width: 768px) {

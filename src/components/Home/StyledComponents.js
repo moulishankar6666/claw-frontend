@@ -41,7 +41,33 @@ export const HomeContainer = styled.section`
     font-size:23px;
     cursor:pointer;
   }
-
+  
+  .main-container {
+    height: 90%;
+    widht: 100%;
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .show-todos-btn {
+    font-size: 14px;
+    background-color: #171747;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor:pointer;
+  }
   
 `;
 

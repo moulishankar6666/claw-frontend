@@ -176,7 +176,7 @@ const ScheduleSection = () => {
         );
         const data = await respone.json();
         // eslint-disable-next-line no-restricted-globals
-        location.reload();
+        updatedList(data)
         alert(data.text);
       } catch (error) {
         alert(error);
